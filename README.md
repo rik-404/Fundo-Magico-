@@ -15,7 +15,7 @@ Transforme descrições textuais em backgrounds CSS incríveis com geração din
 
 1. **Clone o repositório**
    ```bash
-   git clone https://github.com/seu-usuario/szpc-fundo-magico-js.git
+   git clone https://github.com/seu-usuario/Fundo-Magico-.git
    cd szpc-fundo-magico-js
    ```
 
@@ -181,8 +181,8 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 ## 📞 Contato
 
-- **GitHub**: [@seu-usuario](https://github.com/seu-usuario)
-- **Email**: seu-email@exemplo.com
+- **GitHub**: [404__rik]([https://github.com/seu-usuario](https://github.com/rik-404))
+- **Email**: vendraminiinformatica.contato@gmail.com
 
 ---
 
