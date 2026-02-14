@@ -137,7 +137,7 @@ szpc-fundo-magico-js/
 
 3. **Acesse**
    ```
-   https://seu-usuario.github.io/szpc-fundo-magico-js/
+   https://github.com/rik-404/Fundo-Magico-
    ```
 
 ### Netlify
