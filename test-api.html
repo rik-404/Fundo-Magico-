@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste API</title>
+</head>
+<body>
+    <h1>Teste de Resposta da API</h1>
+    <button onclick="testarResposta()">Testar Resposta Mock</button>
+    <div id="resultado"></div>
+
+    <script>
+        function testarResposta() {
+            // Simular resposta válida da API
+            const respostaMock = {
+                html: '<div class="magic-bg">Background gerado!</div>',
+                css: '.magic-bg { background: linear-gradient(45deg, #ff6b6b, #4ecdc4); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; border-radius: 12px; }'
+            };
+            
+            document.getElementById('resultado').innerHTML = `
+                <h3>Resposta JSON Válida:</h3>
+                <pre>${JSON.stringify(respostaMock, null, 2)}</pre>
+                <div style="margin-top: 20px;">
+                    <h4>Preview:</h4>
+                    ${respostaMock.html}
+                </div>
+                <style>${respostaMock.css}</style>
+            `;
+        }
+    </script>
+</body>
+</html>

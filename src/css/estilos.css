@@ -1,0 +1,311 @@
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: "Roboto Mono", monospace;
+    line-height: 1.4;
+    padding: 32px 24px;
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Efeito Matrix Binário */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 255, 0, 0.03) 50%,
+        transparent 100%
+    );
+    pointer-events: none;
+}
+
+/* Background glassmorphism */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(0, 255, 170, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0, 150, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 60%, rgba(255, 0, 255, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.matrix-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.matrix-column {
+    position: absolute;
+    top: -100%;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00;
+    animation: matrixFall linear infinite;
+    white-space: nowrap;
+}
+
+@keyframes matrixFall {
+    to {
+        transform: translateY(calc(100vh + 100%));
+    }
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent
+    );
+}
+
+.logo-container {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.vendramini-logo {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #00ffaa 0%, #0096ff 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    font-weight: bold;
+    color: #0a0f1a;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 255, 170, 0.3);
+}
+
+.vendramini-logo::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #00ffaa, #0096ff, #00ffaa);
+    border-radius: 16px;
+    z-index: -1;
+    opacity: 0.7;
+    animation: borderGlow 3s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+.header h1{
+    margin-bottom: 16px;
+    font-size: 48px;
+}
+
+.header .subtitle {
+    font-size: 19.2px;
+    color: #ffffffcc;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.container{
+    max-width: 1024px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.card{
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 32px;
+    margin-bottom: 32px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card.main {
+    padding: 32px;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent
+    );
+}
+
+.card-header{
+    text-align: center;
+    margin-bottom: 32px;
+    font-size: 20.8px;
+}
+
+.form-group textarea{
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    width: 100%;
+    min-height: 120px;
+    border-radius: 12px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    padding: 16px;
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.form-group textarea:focus{
+    outline: none;
+    border-color: #00ffaa;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 
+        0 0 0 2px rgba(0, 255, 170, 0.3),
+        0 4px 16px rgba(0, 255, 170, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.form-group textarea::placeholder{
+    color: #a19e9e;
+}
+
+.form-group .btn-magic{
+    width: 100%;
+    padding: 16px 32px;
+    background: linear-gradient(90deg, #00ffaa 0%, #0096ff 100%);
+    color: #0a0f1a;
+    font-size: 17.6px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 255, 170, 0.3);
+}
+
+.form-group .btn-magic:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 255, 170, 0.4);
+}
+
+.preview-card{
+    display: none;
+}
+
+.code-grid{
+    display: flex;
+    gap: 24px
+}
+
+.code-card{
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    width: 50%;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.code-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent
+    );
+}
+
+.code-title{
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
+.code-block{
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(94, 234, 212, 0.2);
+    color: #5eead4;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 14px;
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(94, 234, 212, 0.1);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}

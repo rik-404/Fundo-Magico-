@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste Geração Dinâmica</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #222; color: white; }
+        .test-area { margin: 20px 0; padding: 20px; border: 1px solid #555; border-radius: 8px; }
+        button { padding: 10px 20px; margin: 5px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #5a67d8; }
+        .resultado { margin-top: 10px; }
+        .css-code { background: #1a1a1a; padding: 10px; border-radius: 5px; font-family: monospace; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <h1>Teste de Geração Dinâmica</h1>
+    
+    <div class="test-area">
+        <h3>Teste a função de geração:</h3>
+        <button onclick="testarGeracao('gradiente azul')">Teste: gradiente azul</button>
+        <button onclick="testarGeracao('fundo vermelho com sombra')">Teste: fundo vermelho com sombra</button>
+        <button onclick="testarGeracao('gradiente radial verde amarelo')">Teste: gradiente radial verde amarelo</button>
+        <button onclick="testarGeracao('background diagonal roxo rosa animado')">Teste: background diagonal roxo rosa animado</button>
+        
+        <div id="resultado" class="resultado"></div>
+    </div>
+
+    <script>
+        function gerarBackgroundDinamico(descricao) {
+            const desc = descricao.toLowerCase();
+            
+            // Extrair cores da descrição
+            const cores = {
+                vermelho: ['#ff6b6b', '#ee5a24', '#ff4757'],
+                azul: ['#4834d4', '#3742fa', '#5f9ea0', '#00c9ff', '#006ba6'],
+                verde: ['#6ab04c', '#badc58', '#44bd32', '#95afc0'],
+                amarelo: ['#f9ca24', '#f0932b', '#ffa500', '#ffd32c'],
+                roxo: ['#a55eea', '#8854d0', '#667eea', '#764ba2'],
+                laranja: ['#ff9ff3', '#feca57', '#ff6348', '#ff9a00'],
+                rosa: ['#ff6b9d', '#ff9ff3', '#ee5a6f', '#f368e0'],
+                cinza: ['#747d8c', '#57606f', '#2f3542', '#dfe6e9'],
+                preto: ['#2f3542', '#000000', '#1e272e'],
+                branco: ['#ffffff', '#f1f2f6', '#dfe6e9']
+            };
+            
+            // Detectar tipo de background
+            let tipoGradiente = 'linear';
+            let direcao = '135deg';
+            let animacao = '';
+            let efeitos = [];
+            
+            // Análise da descrição para determinar características
+            if (desc.includes('radial') || desc.includes('circular')) {
+                tipoGradiente = 'radial';
+            }
+            
+            if (desc.includes('horizontal') || desc.includes('lado')) {
+                direcao = '90deg';
+            } else if (desc.includes('vertical') || desc.includes('cima')) {
+                direcao = '180deg';
+            } else if (desc.includes('diagonal')) {
+                direcao = '45deg';
+            }
+            
+            // Detectar animações
+            if (desc.includes('animado') || desc.includes('movimento') || desc.includes('pulsar')) {
+                animacao = 'pulse';
+            } else if (desc.includes('gradiente') && (desc.includes('mover') || desc.includes('fluir'))) {
+                animacao = 'gradient';
+            }
+            
+            // Detectar efeitos especiais
+            if (desc.includes('sombra') || desc.includes('shadow')) {
+                efeitos.push('box-shadow');
+            }
+            if (desc.includes('brilhante') || desc.includes('brilho')) {
+                efeitos.push('brightness');
+            }
+            
+            // Selecionar cores baseado na descrição
+            let coresSelecionadas = [];
+            for (const [cor, valores] of Object.entries(cores)) {
+                if (desc.includes(cor)) {
+                    coresSelecionadas.push(...valores.slice(0, 2));
+                }
+            }
+            
+            // Se não encontrou cores específicas, usar cores padrão
+            if (coresSelecionadas.length === 0) {
+                coresSelecionadas = ['#667eea', '#764ba2'];
+            }
+            
+            // Limitar a 3 cores no máximo
+            coresSelecionadas = coresSelecionadas.slice(0, 3);
+            
+            // Gerar CSS
+            let css = `.dynamic-bg {`;
+            css += `background: ${tipoGradiente}-gradient(${direcao}, `;
+            css += coresSelecionadas.join(', ');
+            css += `);`;
+            css += `height: 200px;`;
+            css += `display: flex; align-items: center; justify-content: center;`;
+            css += `color: white; font-size: 24px; font-weight: bold;`;
+            css += `border-radius: 16px;`;
+            css += `text-shadow: 2px 2px 4px rgba(0,0,0,0.3);`;
+            
+            // Adicionar efeitos
+            if (efeitos.includes('box-shadow')) {
+                css += `box-shadow: 0 10px 30px rgba(0,0,0,0.3);`;
+            }
+            if (efeitos.includes('brightness')) {
+                css += `filter: brightness(1.2);`;
+            }
+            
+            // Adicionar animação
+            if (animacao === 'pulse') {
+                css += `animation: pulse 3s infinite;`;
+                css += `} @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }`;
+            } else if (animacao === 'gradient') {
+                css += `background-size: 400% 100%;`;
+                css += `animation: gradient 3s ease infinite;`;
+                css += `} @keyframes gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }`;
+            } else {
+                css += `}`;
+            }
+            
+            // Gerar HTML
+            const titulo = descricao.charAt(0).toUpperCase() + descricao.slice(1, 30);
+            const html = `<div class="dynamic-bg">${titulo}</div>`;
+            
+            return {
+                html: html,
+                css: css
+            };
+        }
+
+        function testarGeracao(descricao) {
+            const resultado = gerarBackgroundDinamico(descricao);
+            const divResultado = document.getElementById('resultado');
+            
+            divResultado.innerHTML = `
+                <h4>Descrição: "${descricao}"</h4>
+                <h5>HTML Gerado:</h5>
+                <pre>${resultado.html}</pre>
+                <h5>CSS Gerado:</h5>
+                <div class="css-code">${resultado.css}</div>
+                <h5>Preview:</h5>
+                <div style="margin-top: 10px;">
+                    ${resultado.html}
+                </div>
+                <style>${resultado.css}</style>
+            `;
+        }
+    </script>
+</body>
+</html>
