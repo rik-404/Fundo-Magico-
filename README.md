@@ -181,7 +181,7 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 ## 📞 Contato
 
-- **GitHub**: [404__rik]([https://github.com/seu-usuario](https://github.com/rik-404))
+- **GitHub**: [rik-404]([https://github.com/seu-usuario](https://github.com/rik-404))
 - **Email**: vendraminiinformatica.contato@gmail.com
 
 ---
